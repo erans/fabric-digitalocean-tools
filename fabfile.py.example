@@ -1,0 +1,14 @@
+import sys
+
+from fabric_digitalocean_tools import *
+from fabric.api import run env roles, task
+
+@task
+@roles("tag1")
+def doit():
+    run("uname -a")
+
+env.user = "root"
+env.key_filename = "my_special_key"
+
+update_roles_digitalocean()
